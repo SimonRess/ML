@@ -1,0 +1,61 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# General Information
+Link: https://www.kaggle.com/competitions/titanic/data
+
+
+# Content
+#### 0. Load data & descriptive statistics
+#### 1. Imputing Missing Features
+#### 2. Feature Engineering
+#### 3. Modeling
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+#### 0. Load data & descriptive statistics
+```{r, Load-Files}
+if(!require(readr)) install.packages("readr")
+library(readr)
+
+if(!require(dplyr)) install.packages("dplyr")
+library(dplyr)
+
+if(!require(stringr)) install.packages("stringr")
+library(stringr)
+
+train = read.csv("train.csv")
+test = read.csv("test.csv")
+```
+
+```{r, descriptive-statistics}
+if(!require(psych)) install.packages("psych")
+library(psych)
+describe(train)
+
+describeBy(train, train$Sex)
+
+```
+
+#### 1. Imputing Missing Features
+#### 2. Feature Engineering
+```{r, Feature-Engineering}
+source("2.Feature_Engineering.r")
+
+train = split.Cabins(train)
+
+train = create.family.size(train)
+```
+
+
+
+#### 3. Modeling
+```{r, Feature-Engineering}
+
+
+```
+
